@@ -1,0 +1,18 @@
+syntax = "proto2";
+
+package scheduler;
+
+message Event {
+    message Subscribed {
+        required FrameworkID framework_id = 1;
+    }
+    optional Subscribed subscribed = 1;
+}
+
+/**
+ * A unique ID assigned to a framework. A framework can reuse this ID
+ * in order to do failover (see MesosSchedulerDriver).
+ */
+message FrameworkID {
+    required string value = 1;
+}
